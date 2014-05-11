@@ -161,6 +161,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\clericalStaff\clericalStaffAreaRegistration.cs" />
+    <Compile Include="Areas\doctor\doctorAreaRegistration.cs" />
+    <Compile Include="Areas\manager\managerAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -284,9 +287,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\clericalStaff\Controllers\" />
+    <Folder Include="Areas\clericalStaff\Models\" />
+    <Folder Include="Areas\clericalStaff\Views\Shared\" />
+    <Folder Include="Areas\doctor\Controllers\" />
+    <Folder Include="Areas\doctor\Models\" />
+    <Folder Include="Areas\doctor\Views\Shared\" />
+    <Folder Include="Areas\manager\Controllers\" />
+    <Folder Include="Areas\manager\Models\" />
+    <Folder Include="Areas\manager\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\manager\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\clericalStaff\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\doctor\Views\Web.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
