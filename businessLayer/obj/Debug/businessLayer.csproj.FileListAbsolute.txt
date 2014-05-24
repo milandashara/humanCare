@@ -1,0 +1,5 @@
+C:\Users\Milan\documents\visual studio 2010\Projects\HumanCare\businessLayer\bin\Debug\businessLayer.dll
+C:\Users\Milan\documents\visual studio 2010\Projects\HumanCare\businessLayer\bin\Debug\businessLayer.pdb
+C:\Users\Milan\documents\visual studio 2010\Projects\HumanCare\businessLayer\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Milan\documents\visual studio 2010\Projects\HumanCare\businessLayer\obj\Debug\businessLayer.dll
+C:\Users\Milan\documents\visual studio 2010\Projects\HumanCare\businessLayer\obj\Debug\businessLayer.pdb

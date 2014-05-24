@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Web.WebPages.OAuth;
 using HumanCare.Models;
-
+using WebMatrix.WebData;
 namespace HumanCare
 {
     public static class AuthConfig
@@ -27,6 +27,7 @@ namespace HumanCare
             //    appSecret: "");
 
             //OAuthWebSecurity.RegisterGoogleClient();
+           // WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
         }
     }
 }

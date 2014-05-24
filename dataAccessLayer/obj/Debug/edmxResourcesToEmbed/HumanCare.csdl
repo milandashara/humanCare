@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="humanCareModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="humanCareEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Doctors" EntityType="humanCareModel.Doctor" />
+    <EntitySet Name="Doctor_AppntSlot" EntityType="humanCareModel.Doctor_AppntSlot" />
+    <EntitySet Name="Doctor_Room" EntityType="humanCareModel.Doctor_Room" />
+    <EntitySet Name="Doctor_Specialization" EntityType="humanCareModel.Doctor_Specialization" />
+    <EntitySet Name="Patients" EntityType="humanCareModel.Patient" />
+    <EntitySet Name="Patient_Appointment" EntityType="humanCareModel.Patient_Appointment" />
+    <EntitySet Name="Patient_Prescription" EntityType="humanCareModel.Patient_Prescription" />
+    <EntitySet Name="Patient_Room" EntityType="humanCareModel.Patient_Room" />
+    <EntitySet Name="Patient_Treatment" EntityType="humanCareModel.Patient_Treatment" />
+    <EntitySet Name="Prescription_Medicine" EntityType="humanCareModel.Prescription_Medicine" />
+    <EntitySet Name="Rooms" EntityType="humanCareModel.Room" />
+    <EntitySet Name="Specializations" EntityType="humanCareModel.Specialization" />
+    <EntitySet Name="Staffs" EntityType="humanCareModel.Staff" />
+    <EntitySet Name="sysdiagrams" EntityType="humanCareModel.sysdiagram" />
+    <AssociationSet Name="FK_Doctor_AppntSlot_Doctor" Association="humanCareModel.FK_Doctor_AppntSlot_Doctor">
+      <End Role="Doctor" EntitySet="Doctors" />
+      <End Role="Doctor_AppntSlot" EntitySet="Doctor_AppntSlot" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_Room_Doctor" Association="humanCareModel.FK_Doctor_Room_Doctor">
+      <End Role="Doctor" EntitySet="Doctors" />
+      <End Role="Doctor_Room" EntitySet="Doctor_Room" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_Specialization_Doctor" Association="humanCareModel.FK_Doctor_Specialization_Doctor">
+      <End Role="Doctor" EntitySet="Doctors" />
+      <End Role="Doctor_Specialization" EntitySet="Doctor_Specialization" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Doctor_Room_Room" Association="humanCareModel.FK_Doctor_Room_Room">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="Doctor_Room" EntitySet="Doctor_Room" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Appointment_Patient" Association="humanCareModel.FK_Patient_Appointment_Patient">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Patient_Appointment" EntitySet="Patient_Appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Prescription_Patient" Association="humanCareModel.FK_Patient_Prescription_Patient">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Patient_Prescription" EntitySet="Patient_Prescription" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Room_Patient" Association="humanCareModel.FK_Patient_Room_Patient">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Patient_Room" EntitySet="Patient_Room" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Treatment_Patient" Association="humanCareModel.FK_Patient_Treatment_Patient">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="Patient_Treatment" EntitySet="Patient_Treatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Treatment_Patient_Prescription" Association="humanCareModel.FK_Patient_Treatment_Patient_Prescription">
+      <End Role="Patient_Prescription" EntitySet="Patient_Prescription" />
+      <End Role="Patient_Treatment" EntitySet="Patient_Treatment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prescription_Medicine_Patient_Prescription" Association="humanCareModel.FK_Prescription_Medicine_Patient_Prescription">
+      <End Role="Patient_Prescription" EntitySet="Patient_Prescription" />
+      <End Role="Prescription_Medicine" EntitySet="Prescription_Medicine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Room_Patient_Room" Association="humanCareModel.FK_Room_Patient_Room">
+      <End Role="Patient_Room" EntitySet="Patient_Room" />
+      <End Role="Room" EntitySet="Rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Staff_Room" Association="humanCareModel.FK_Staff_Room">
+      <End Role="Room" EntitySet="Rooms" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Doctor">
+    <Key>
+      <PropertyRef Name="doctorId" />
+    </Key>
+    <Property Name="doctorId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="dob" Type="DateTime" Nullable="false" />
+    <Property Name="gender" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="phone" Type="Int32" Nullable="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="startDate" Type="DateTime" />
+    <Property Name="endDate" Type="DateTime" />
+    <Property Name="nationality" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="icNum" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="street" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="area" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="country" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="postalCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Doctor_AppntSlot" Relationship="humanCareModel.FK_Doctor_AppntSlot_Doctor" FromRole="Doctor" ToRole="Doctor_AppntSlot" />
+    <NavigationProperty Name="Doctor_Room" Relationship="humanCareModel.FK_Doctor_Room_Doctor" FromRole="Doctor" ToRole="Doctor_Room" />
+    <NavigationProperty Name="Doctor_Specialization" Relationship="humanCareModel.FK_Doctor_Specialization_Doctor" FromRole="Doctor" ToRole="Doctor_Specialization" />
+  </EntityType>
+  <EntityType Name="Doctor_AppntSlot">
+    <Key>
+      <PropertyRef Name="dateId" />
+    </Key>
+    <Property Name="dateId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="doctorId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="appntDate" Type="DateTime" Nullable="false" />
+    <Property Name="slotAvaliable" Type="Int32" />
+    <Property Name="slotAllocated" Type="Int32" />
+    <Property Name="workStartTime" Type="Time" />
+    <Property Name="workEndTime" Type="Time" />
+    <Property Name="timePerSlot" Type="Int32" />
+    <NavigationProperty Name="Doctor" Relationship="humanCareModel.FK_Doctor_AppntSlot_Doctor" FromRole="Doctor_AppntSlot" ToRole="Doctor" />
+  </EntityType>
+  <EntityType Name="Doctor_Room">
+    <Key>
+      <PropertyRef Name="doctorId" />
+    </Key>
+    <Property Name="doctorId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="roomId" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="startDateTime" Type="DateTime" />
+    <Property Name="endDateTime" Type="DateTime" />
+    <NavigationProperty Name="Doctor" Relationship="humanCareModel.FK_Doctor_Room_Doctor" FromRole="Doctor_Room" ToRole="Doctor" />
+    <NavigationProperty Name="Room" Relationship="humanCareModel.FK_Doctor_Room_Room" FromRole="Doctor_Room" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="Doctor_Specialization">
+    <Key>
+      <PropertyRef Name="doctorId" />
+      <PropertyRef Name="specId" />
+    </Key>
+    <Property Name="doctorId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="specId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Doctor" Relationship="humanCareModel.FK_Doctor_Specialization_Doctor" FromRole="Doctor_Specialization" ToRole="Doctor" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="patientId" />
+    </Key>
+    <Property Name="patientId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="phone" Type="Int32" Nullable="false" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="gender" Type="String" Nullable="false" MaxLength="1" Unicode="true" FixedLength="true" />
+    <Property Name="dob" Type="DateTime" Nullable="false" />
+    <Property Name="nationality" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+    <Property Name="icNum" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="street" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="area" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="country" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="postalCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Patient_Appointment" Relationship="humanCareModel.FK_Patient_Appointment_Patient" FromRole="Patient" ToRole="Patient_Appointment" />
+    <NavigationProperty Name="Patient_Prescription" Relationship="humanCareModel.FK_Patient_Prescription_Patient" FromRole="Patient" ToRole="Patient_Prescription" />
+    <NavigationProperty Name="Patient_Room" Relationship="humanCareModel.FK_Patient_Room_Patient" FromRole="Patient" ToRole="Patient_Room" />
+    <NavigationProperty Name="Patient_Treatment" Relationship="humanCareModel.FK_Patient_Treatment_Patient" FromRole="Patient" ToRole="Patient_Treatment" />
+  </EntityType>
+  <EntityType Name="Patient_Appointment">
+    <Key>
+      <PropertyRef Name="appntId" />
+    </Key>
+    <Property Name="patientId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="appntId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="dateId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="upcomingPast" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="doctorId" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="startTime" Type="DateTime" />
+    <Property Name="endTime" Type="DateTime" />
+    <Property Name="prescriptionId" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Patient" Relationship="humanCareModel.FK_Patient_Appointment_Patient" FromRole="Patient_Appointment" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="Patient_Prescription">
+    <Key>
+      <PropertyRef Name="prescriptionId" />
+    </Key>
+    <Property Name="prescriptionId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="patientId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="dateIssued" Type="DateTime" Nullable="false" />
+    <Property Name="doctorId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Patient" Relationship="humanCareModel.FK_Patient_Prescription_Patient" FromRole="Patient_Prescription" ToRole="Patient" />
+    <NavigationProperty Name="Patient_Treatment" Relationship="humanCareModel.FK_Patient_Treatment_Patient_Prescription" FromRole="Patient_Prescription" ToRole="Patient_Treatment" />
+    <NavigationProperty Name="Prescription_Medicine" Relationship="humanCareModel.FK_Prescription_Medicine_Patient_Prescription" FromRole="Patient_Prescription" ToRole="Prescription_Medicine" />
+  </EntityType>
+  <EntityType Name="Patient_Room">
+    <Key>
+      <PropertyRef Name="roomId" />
+    </Key>
+    <Property Name="patientId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="roomId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="fromDate" Type="DateTime" />
+    <Property Name="toDate" Type="DateTime" />
+    <Property Name="treatmentId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Patient" Relationship="humanCareModel.FK_Patient_Room_Patient" FromRole="Patient_Room" ToRole="Patient" />
+    <NavigationProperty Name="Room" Relationship="humanCareModel.FK_Room_Patient_Room" FromRole="Patient_Room" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="Patient_Treatment">
+    <Key>
+      <PropertyRef Name="treatmentId" />
+    </Key>
+    <Property Name="treatmentId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="patientId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="doctorId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="prescriptionId" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="startDate" Type="DateTime" />
+    <Property Name="endDate" Type="DateTime" />
+    <Property Name="roomId" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Patient" Relationship="humanCareModel.FK_Patient_Treatment_Patient" FromRole="Patient_Treatment" ToRole="Patient" />
+    <NavigationProperty Name="Patient_Prescription" Relationship="humanCareModel.FK_Patient_Treatment_Patient_Prescription" FromRole="Patient_Treatment" ToRole="Patient_Prescription" />
+  </EntityType>
+  <EntityType Name="Prescription_Medicine">
+    <Key>
+      <PropertyRef Name="medicineId" />
+    </Key>
+    <Property Name="medicineId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="prescriptionId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="name" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="days" Type="Int32" />
+    <Property Name="inTake" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Patient_Prescription" Relationship="humanCareModel.FK_Prescription_Medicine_Patient_Prescription" FromRole="Prescription_Medicine" ToRole="Patient_Prescription" />
+  </EntityType>
+  <EntityType Name="Room">
+    <Key>
+      <PropertyRef Name="roomId" />
+    </Key>
+    <Property Name="roomId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="type" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="roomNum" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="costPerDay" Type="Double" />
+    <Property Name="vacancy" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="phoneNum" Type="Int32" />
+    <Property Name="startDate" Type="DateTime" />
+    <Property Name="endDate" Type="DateTime" />
+    <Property Name="location" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Doctor_Room" Relationship="humanCareModel.FK_Doctor_Room_Room" FromRole="Room" ToRole="Doctor_Room" />
+    <NavigationProperty Name="Patient_Room" Relationship="humanCareModel.FK_Room_Patient_Room" FromRole="Room" ToRole="Patient_Room" />
+    <NavigationProperty Name="Staffs" Relationship="humanCareModel.FK_Staff_Room" FromRole="Room" ToRole="Staff" />
+  </EntityType>
+  <EntityType Name="Specialization">
+    <Key>
+      <PropertyRef Name="specId" />
+    </Key>
+    <Property Name="specId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="specialize" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="staffId" />
+    </Key>
+    <Property Name="staffId" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="type" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="dob" Type="DateTime" Nullable="false" />
+    <Property Name="gender" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="phone" Type="Int32" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="35" Unicode="false" FixedLength="false" />
+    <Property Name="icNum" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="nationality" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="roomId" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="street" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="area" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="country" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="postalCode" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Room" Relationship="humanCareModel.FK_Staff_Room" FromRole="Staff" ToRole="Room" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_Doctor_AppntSlot_Doctor">
+    <End Role="Doctor" Type="humanCareModel.Doctor" Multiplicity="1" />
+    <End Role="Doctor_AppntSlot" Type="humanCareModel.Doctor_AppntSlot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="doctorId" />
+      </Principal>
+      <Dependent Role="Doctor_AppntSlot">
+        <PropertyRef Name="doctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_Room_Doctor">
+    <End Role="Doctor" Type="humanCareModel.Doctor" Multiplicity="1" />
+    <End Role="Doctor_Room" Type="humanCareModel.Doctor_Room" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="doctorId" />
+      </Principal>
+      <Dependent Role="Doctor_Room">
+        <PropertyRef Name="doctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_Specialization_Doctor">
+    <End Role="Doctor" Type="humanCareModel.Doctor" Multiplicity="1" />
+    <End Role="Doctor_Specialization" Type="humanCareModel.Doctor_Specialization" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doctor">
+        <PropertyRef Name="doctorId" />
+      </Principal>
+      <Dependent Role="Doctor_Specialization">
+        <PropertyRef Name="doctorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Doctor_Room_Room">
+    <End Role="Room" Type="humanCareModel.Room" Multiplicity="0..1" />
+    <End Role="Doctor_Room" Type="humanCareModel.Doctor_Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="roomId" />
+      </Principal>
+      <Dependent Role="Doctor_Room">
+        <PropertyRef Name="roomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Appointment_Patient">
+    <End Role="Patient" Type="humanCareModel.Patient" Multiplicity="1" />
+    <End Role="Patient_Appointment" Type="humanCareModel.Patient_Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="patientId" />
+      </Principal>
+      <Dependent Role="Patient_Appointment">
+        <PropertyRef Name="patientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Prescription_Patient">
+    <End Role="Patient" Type="humanCareModel.Patient" Multiplicity="1" />
+    <End Role="Patient_Prescription" Type="humanCareModel.Patient_Prescription" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="patientId" />
+      </Principal>
+      <Dependent Role="Patient_Prescription">
+        <PropertyRef Name="patientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Room_Patient">
+    <End Role="Patient" Type="humanCareModel.Patient" Multiplicity="1" />
+    <End Role="Patient_Room" Type="humanCareModel.Patient_Room" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="patientId" />
+      </Principal>
+      <Dependent Role="Patient_Room">
+        <PropertyRef Name="patientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Treatment_Patient">
+    <End Role="Patient" Type="humanCareModel.Patient" Multiplicity="1" />
+    <End Role="Patient_Treatment" Type="humanCareModel.Patient_Treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="patientId" />
+      </Principal>
+      <Dependent Role="Patient_Treatment">
+        <PropertyRef Name="patientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Treatment_Patient_Prescription">
+    <End Role="Patient_Prescription" Type="humanCareModel.Patient_Prescription" Multiplicity="0..1" />
+    <End Role="Patient_Treatment" Type="humanCareModel.Patient_Treatment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient_Prescription">
+        <PropertyRef Name="prescriptionId" />
+      </Principal>
+      <Dependent Role="Patient_Treatment">
+        <PropertyRef Name="prescriptionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prescription_Medicine_Patient_Prescription">
+    <End Role="Patient_Prescription" Type="humanCareModel.Patient_Prescription" Multiplicity="1" />
+    <End Role="Prescription_Medicine" Type="humanCareModel.Prescription_Medicine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient_Prescription">
+        <PropertyRef Name="prescriptionId" />
+      </Principal>
+      <Dependent Role="Prescription_Medicine">
+        <PropertyRef Name="prescriptionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Room_Patient_Room">
+    <End Role="Patient_Room" Type="humanCareModel.Patient_Room" Multiplicity="1" />
+    <End Role="Room" Type="humanCareModel.Room" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Patient_Room">
+        <PropertyRef Name="roomId" />
+      </Principal>
+      <Dependent Role="Room">
+        <PropertyRef Name="roomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Staff_Room">
+    <End Role="Room" Type="humanCareModel.Room" Multiplicity="0..1" />
+    <End Role="Staff" Type="humanCareModel.Staff" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Room">
+        <PropertyRef Name="roomId" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="roomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
